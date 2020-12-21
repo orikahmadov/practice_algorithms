@@ -1,10 +1,76 @@
-#Finding first and second min
+###################################################################################################################################################################
+#Linear Search Algorithm runs in Linear Complexity
+def linear_search(list, item):
+    found = False
+    for i in range(len(list)):
+        if list[i] == item:
+            found = True
+    return found
+###################################################################################################################################################################
 
-def second_min(list): 
-    f1,f2 = list[0], list[1]
-    for i in range((len(nums))):
-        if f1 > nums[i]:
-            f1 =  nums[i]
-        if nums[i] > f1:
-            f2 =  nums[i]
-    print("First min:", f1, "Second min:", f2)
+#NOTE THAT THIS ALGORITHM WORKS ONLY IF THE INPUT LIST IN SORTED 
+#Binary Search
+def binary_search(list, item):
+    if len(list) < 1:
+        return list
+    else:
+        start = 0
+        end =  len(list) - 1
+        while True:
+            middle =  len(list)//2
+            for i in range(start, end):
+                if list[i] == list[middle]:
+                    return f"Found {item} in the middle"
+                elif  item > list[middle]:
+                    start =  middle + 1
+                    return f"Found {item} in {list.index(item)} index"
+                else:
+                    end =  middle - 1
+                    return f"Found {item} in the {list.index(item)} index"
+###################################################################################################################################################################
+
+def QuickSort(list):
+    #length of list
+    length_list =  len(list)
+    #if there is less than 1 item in list return list
+    if length_list <=  1:
+        return list
+    #define pivot
+    else:
+        pivot =  list.pop() #Last item as pivot
+
+    #2 Lists which will hold the values of compared elements
+    itemsLower = []
+    itemsGreater = []
+    #iterate through  list
+    for item in list:
+        if item < pivot:
+            itemsLower.append(item)
+        else:
+            itemsGreater.append(item)
+    #recursively return the function
+    return QuickSort(itemsLower) + [pivot] + QuickSort(itemsGreater)
+
+###################################################################################################################################################################
+#Finding Characters frequency in a string
+string =  "Today the weather is so beautiful,therefore I want to go for walk!"
+def chars_frequency(list):
+    chars = {}   #Start
+    for i in list:
+        if i not in chars:
+            chars[i] = 0
+        chars[i] +=1
+    return chars
+
+#Finding Word frequency in a string basically same algorithm except you split the string and convert it to list
+string =  "Today the weather is so beautiful,therefore I want to go for walk and walking is so healthy !"
+def chars_frequency(list):
+    words = {}   #Start
+    for i in list.split():
+        if i not in chars:
+            words[i] = 0
+        words[i] +=1
+    return words
+
+            
+
