@@ -11,22 +11,17 @@ def linear_search(list, item):
 #NOTE THAT THIS ALGORITHM WORKS ONLY IF THE INPUT LIST IN SORTED 
 #Binary Search
 def binary_search(list, item):
-    if len(list) < 1:
-        return list
-    else:
-        start = 0
-        end =  len(list) - 1
-        while True:
-            middle =  len(list)//2
-            for i in range(start, end):
-                if list[i] == list[middle]:
-                    return f"Found {item} in the middle"
-                elif  item > list[middle]:
-                    start =  middle + 1
-                    return f"Found {item} in {list.index(item)} index"
-                else:
-                    end =  middle - 1
-                    return f"Found {item} in the {list.index(item)} index"
+    start = 0
+    end  =  len(list) - 1
+    while start <= end:
+        middle =  (start +  end) // 2
+        if list[middle] == item:
+            return middle
+        elif item >  list[middle]:
+            start =  middle + 1
+        else:
+            end =  middle - 1
+    return None
 ###################################################################################################################################################################
 
 def QuickSort(list):
