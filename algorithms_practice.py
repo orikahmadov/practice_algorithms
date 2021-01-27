@@ -66,6 +66,12 @@ def chars_frequency(list):
             words[i] = 0
         words[i] +=1
     return words
+###################################################################################################################################################################
+#Recursion
+def is_array_sorted(array):
+    if len(array) == 1:
+        return True
+    else:
+        return array[0] <= array[1]  and is_array_sorted(array[1:])
 
-            
 
