@@ -59,7 +59,7 @@ def chars_frequency(list):
 
 #Finding Word frequency in a string basically same algorithm except you split the string and convert it to list
 string =  "Today the weather is so beautiful,therefore I want to go for walk and walking is so healthy !"
-def chars_frequency(list):
+def word_frequency(list):
     words = {}   #Start
     for i in list.split():
         if i not in chars:
