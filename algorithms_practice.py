@@ -59,14 +59,27 @@ def chars_frequency(list):
 
 #Finding Word frequency in a string basically same algorithm except you split the string and convert it to list
 string =  "Today the weather is so beautiful,therefore I want to go for walk and walking is so healthy !"
-def word_frequency(list):
+def word_frequency(string):
     words = {}   #Start
-    for i in list.split():
+    for i in string.split():
         if i not in chars:
             words[i] = 0
         words[i] +=1
     return words
 ###################################################################################################################################################################
+#Comparing 2 strings and finding how many times a single character of one string occurs in another
+
+def str_frequency(a,b):
+    str =  a + b
+    characters =  {}
+    for i in str:
+        if i not in characters:
+            characters[i] = 0
+        characters[i] +=1
+    return characters
+
+###################################################################################################################################################################
+
 #Recursion
 def is_array_sorted(array):
     if len(array) == 1:
