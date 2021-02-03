@@ -86,5 +86,79 @@ def is_array_sorted(array):
         return True
     else:
         return array[0] <= array[1]  and is_array_sorted(array[1:])
+###################################################################################################################################################################
+# Singly Linked List
 
+class Node:
+    def __init__(self, data = None):
+        self.data = data
+        self.next = None
+
+
+class LinkedList:
+    def __init__(self):
+        self.head =  Node()
+
+
+    def append(self, new_element):
+        new_node =  Node(data =  new_element) # new created node holds the passed data to it
+        current_node =  self.head           #left most point head node of the list
+        while current_node.next != None:    # iterating untill the last element of the list as long
+            current_node = current_node.next    #as it is not empty add the new node to the next
+        else:
+            current_node.next =  new_node          #otherwise assign new node to the current node
+
+    def __len__(self):
+        current =  self.head
+        counter = 0
+        while current != None:
+            counter += 1
+            current = current.next
+        return counter
+
+    def traverse(self):
+        current =  self.head
+        elements = []
+        while current.next != None:
+            current =  current.next
+            elements.append(current)
+        else:
+            return elements
+
+
+    def has_value(self, value):
+        current =  self.head
+        while current.next != None:
+            current = current.next
+            if current == value:
+                return f"Found {value}"
+            else:
+                return f"Not found"
+
+    def pop(self, index):
+        if index >= self.__len__():
+            return("Index exceeded the length of the list")
+        else:
+            current_index =  0
+            current_node =  self.head
+            while current_node.next != None:
+                current_node = current_node.next
+                if current_index ==  index:
+                    current_index += 1
+                else:
+                    return current_node.data
+
+    def delete_node(self, index):
+        if index >= self.__len__():
+            print("Exceeded the length")
+            return None
+        else:
+            current =  self.head
+            while True:
+                last_node = current
+                current =  current.next
+                if current== index:
+                    last_node.next =  current.next
+                else:
+                    index += 1
 
