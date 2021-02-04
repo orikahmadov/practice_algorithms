@@ -90,75 +90,69 @@ def is_array_sorted(array):
 # Singly Linked List
 
 class Node:
-    def __init__(self, data = None):
-        self.data = data
-        self.next = None
+    def __init__(self, data =  None):
+        self.data =  data
+        self.next=  None
 
 
-class LinkedList:
+class Linked_List:
     def __init__(self):
         self.head =  Node()
 
-
-    def append(self, new_element):
-        new_node =  Node(data =  new_element) # new created node holds the passed data to it
-        current_node =  self.head           #left most point head node of the list
-        while current_node.next != None:    # iterating untill the last element of the list as long
-            current_node = current_node.next    #as it is not empty add the new node to the next
+    def append_data(self, new_element):
+        new_node =  Node(data=new_element)
+        current_node  =  self.head
+        while current_node.next != None:
+            current_node =  current_node.next
         else:
-            current_node.next =  new_node          #otherwise assign new node to the current node
+            current_node.next =  new_node
 
-    def __len__(self):
-        current =  self.head
-        counter = 0
-        while current != None:
+
+    def length(self):
+        counter =  0
+        current_node =  self.head
+        while current_node != None:
+            current_node =  current_node.next
             counter += 1
-            current = current.next
         return counter
-
-    def traverse(self):
-        current =  self.head
-        elements = []
-        while current.next != None:
-            current =  current.next
-            elements.append(current)
-        else:
-            return elements
 
 
     def has_value(self, value):
+        current_node =  self.head
+        while current_node.next != None:
+            current_node =  current_node.next
+            if current_node.data == value:
+                return True
+        else:
+            return False
+    
+    def pop_item(self, element):
         current =  self.head
         while current.next != None:
-            current = current.next
-            if current == value:
-                return f"Found {value}"
-            else:
-                return f"Not found"
-
-    def pop(self, index):
-        if index >= self.__len__():
-            return("Index exceeded the length of the list")
+            current =  current.next
+            if current.data == element:
+                return element
         else:
-            current_index =  0
-            current_node =  self.head
-            while current_node.next != None:
-                current_node = current_node.next
-                if current_index ==  index:
-                    current_index += 1
-                else:
-                    return current_node.data
-
-    def delete_node(self, index):
-        if index >= self.__len__():
-            print("Exceeded the length")
             return None
-        else:
-            current =  self.head
-            while True:
-                last_node = current
-                current =  current.next
-                if current== index:
-                    last_node.next =  current.next
-                else:
-                    index += 1
+
+    def traverse_list(self):
+        current_node =  self.head
+        while current_node.next != None:
+            current_node  = current_node.next
+            print(current_node.data)
+
+    def delete_item(self, index):
+        if index >= self.length():
+            print("List length is exceeded")
+        current_index = 0
+        current_node =  self.head
+        while True:
+            last_node = current_node
+            current_node =  current_node.next
+            if current_index == index:
+                last_node.next =  current_node.next
+                return
+            current_index += 1
+
+  
 
