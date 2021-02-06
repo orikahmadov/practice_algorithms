@@ -1,0 +1,13 @@
+condiition = False      Step 1 
+  while not condition     Step 2
+    for loop  :                Step 3
+      logic of for loop         Step 4
+    
+    else:
+        continue
+        
+else: #end of loop
+ 
+
+        
+
