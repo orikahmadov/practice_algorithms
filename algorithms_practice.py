@@ -164,5 +164,11 @@ def prefix_average(s):
         else:
             a[j] =  total / (j + 1)
     return a
-  
+  ###################################################################################################################################################################
+    def find_duplicate():
+    for i in range(len(list)):
+        for j in range(i + 1, len(list)):
+            if list[j] == list[i]:
+                return True
+    return False
 
