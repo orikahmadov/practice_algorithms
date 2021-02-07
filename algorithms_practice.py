@@ -171,4 +171,18 @@ def prefix_average(s):
             if list[j] == list[i]:
                 return True
     return False
+###################################################################################################################################################################
+#Recursive binary_search
+def binary_search(list, target, low, high):
+    if low > high:
+        return False
+    else:
+        mid =  (low + high) //2
+        if list[mid] == target:
+            return mid
+        elif list[mid] > target:
+            return binary_search(list, target, low, mid - 1)
+        else:
+            return binary_search(list, target,mid +1 , high )
+
 
