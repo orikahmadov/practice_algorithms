@@ -184,5 +184,15 @@ def binary_search(list, target, low, high):
             return binary_search(list, target, low, mid - 1)
         else:
             return binary_search(list, target,mid +1 , high )
+###################################################################################################################################################################
+        
+def download_file(filename):
+    req = requests.get(link)
+    content =  req.content
+    if not req:
+        raise Exception("Bad request has been sent")
+    else:
+        with open("data.csv", "wb") as file:
+            file.write(content)
 
 
