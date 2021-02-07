@@ -153,6 +153,16 @@ class Linked_List:
                 last_node.next =  current_node.next
                 return
             current_index += 1
-
+###################################################################################################################################################################
+def prefix_average(s):
+    n =  len(s)
+    a =  [0] *n     #n times of zeros in a list
+    for j in range(n):  #traverse the list s
+        total = 0               
+        for i in range(j + 1):  #traverse the list but start from one item forward from J (first iteration)
+            total += s[i]       
+        else:
+            a[j] =  total / (j + 1)
+    return a
   
 
