@@ -22,6 +22,20 @@ def binary_search(list, item):
         else:
             end =  middle - 1
     return None
+
+
+#Recursive binary_search
+def binary_search(list, target, low, high):
+    if low > high:
+        return False
+    else:
+        mid =  (low + high) //2
+        if list[mid] == target:
+            return mid
+        elif list[mid] > target:
+            return binary_search(list, target, low, mid - 1)
+        else:
+            return binary_search(list, target,mid +1 , high )
 ###################################################################################################################################################################
 
 def QuickSort(list):
@@ -172,19 +186,7 @@ def prefix_average(s):
                 return True
     return False
 ###################################################################################################################################################################
-#Recursive binary_search
-def binary_search(list, target, low, high):
-    if low > high:
-        return False
-    else:
-        mid =  (low + high) //2
-        if list[mid] == target:
-            return mid
-        elif list[mid] > target:
-            return binary_search(list, target, low, mid - 1)
-        else:
-            return binary_search(list, target,mid +1 , high )
-###################################################################################################################################################################
+
         
 def download_file(filename):
     req = requests.get(link)
@@ -195,4 +197,12 @@ def download_file(filename):
         with open("data.csv", "wb") as file:
             file.write(content)
 
-
+#send email 
+       
+with open("systeminfo.txt", "r") as file:
+    lines = file.read()
+    string_message += lines
+    liness =  file.readlines()
+    with SMTP_SSL(host =  "smtp.gmail.com", port =  465) as server:
+        server.login(user =  "orkhan.ahmadov28@gmail.com", password=os.getenv("PASSWORD"))
+        server.sendmail(msg=string_message, from_addr=os.getenv("EMAIL_ADDRESS"), to_addrs=os.getenv("EMAIL_ADDRESS"))
