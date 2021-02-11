@@ -169,8 +169,35 @@ def linear_search(list, item):
 
 
 ###################################################################################################################################################################
-
-
+#Download a file if it does not exist
+def download_file(url,path, filename):
+    with open("config.json", "r") as json_:
+        file_json =  json.load(json_)
+        if file_json["downloaded"] == True and file_json["url"] ==  url and os.path.exists(f"{filename}.csv"):
+                print("File has been already downloaded")
+        else:
+            request =  requests.get(url)
+            if request.status_code != 200:
+                print("Bad request")
+            else:
+                if os.path.exists(path):
+                    p= os.chdir(path)
+                    config_file["file_name"] =  filename
+                    config_file["url"] += url
+                    content_tile =  request.content
+                    with open(f"{filename}.csv", "wb") as file_write:
+                        file_write.write(content_tile)
+                    with open("config.json", "w")as json_write:
+                        config_file["downloaded"] = True
+                        current_time = datetime.date.today()
+                        formatted_time = datetime.date.strftime(current_time, "%y %B %d")
+                        json_file = json.dumps(config_file, indent=4)
+                        config_file["downloaded_time"] =  formatted_time
+                        config_file["path"] = path
+                        json_write.write(json_file)
+                        print("File has been successfully downloaded")
+                else:
+                    raise Exception("Path does not exist")
 
 
 
